@@ -15,11 +15,11 @@
 </tr>
 <tr>
 <td>Enter Second Prime Number:</td>
-<td><input type="number" value="59" id="q"></p> </td>
+<td><input type="number" value="59" id="q"> </td>
 </tr>
 <tr>
 <td>Enter the Message(cipher text):<br>[A=1, B=2,...]</td>
-<td><input type="number" value="89" id="msg"></p> </td>
+<td><input type="number" value="89" id="msg"></td>
 </tr>
 <tr>
 <td>Public Key:</td>
@@ -37,16 +37,22 @@
     <td>Cipher Text:</td>
     <td><p id="ciphertext"></p> </td>
     </tr>
+      <tr>
+    <td>Plain Text:</td>
+    <td><p id="plaintext"></p> </td>
+    </tr>
     <tr>
     <td><button onclick="RSA();">Apply RSA</button></td>
     </tr>
+
     </table> </center>
     </body>
     <script type="text/javascript">
     function RSA()
     {
     var gcd, p, q, no, n, t, e, i, x;
-    gcd = function (a, b) { return (!b) ? a : gcd(b, a % b); }; p = document.getElementById('p').value;
+    gcd = function (a, b) { return (!b) ? a : gcd(b, a % b); };
+    p = document.getElementById('p').value;
     q = document.getElementById('q').value;
     no = document.getElementById('msg').value; n = p * q;
     t = (p - 1) * (q - 1);
@@ -67,7 +73,12 @@
     }
     ctt = Math.pow(no, e).toFixed(0); ct = ctt % n;
     dtt = Math.pow(ct, d).toFixed(0); dt = dtt % n;
-    document.getElementById('publickey').innerHTML = n; document.getElementById('exponent').innerHTML = e; document.getElementById('privatekey').innerHTML = d; document.getElementById('ciphertext').innerHTML = ct;
+    document.getElementById('publickey').innerHTML = n; 
+    document.getElementById('exponent').innerHTML = e; 
+    document.getElementById('privatekey').innerHTML = d; 
+    document.getElementById('ciphertext').innerHTML = ct;
+    document.getElementById('plaintext').innerHTML = "decryptedtext"+no;
+
     }
     </script>
     </html>
